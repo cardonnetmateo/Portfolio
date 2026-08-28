@@ -1,0 +1,69 @@
+---
+import NavLink from './NavLink.astro';
+import Linjedin from './icons/Linkedin.astro';
+import Github from './icons/GitHub.astro';
+import { Image } from 'astro:assets';
+import profileImg from '../assets/profile-picture.webp';
+---
+<header id="site-header" class="sticky top-0 z-50 bg-transparent backdrop-blur-md w-280 mx-auto py-10 transition-all duration-300">
+    <div class="site-header-inner relative h-20 flex items-center justify-center">
+        <div id="site-avatar" class="absolute left-0">
+            <Image class="size-20 rounded-full object-cover object-top border-2 border-indigo-200" src={profileImg} alt="Rounded avatar" width={160} height={200} loading="eager" fetchpriority="high" />
+        </div>
+
+        <nav class="nav-links absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 flex flex-row gap-x-10">
+            <NavLink href="#servicios">Proyectos</NavLink>
+            <NavLink href="#nosotros">Sobre mí</NavLink>
+            <NavLink href="#contacto">Contacto</NavLink>
+        </nav>
+
+        <div class="social-icons absolute right-0 top-1/2 -translate-y-1/2 flex flex-row gap-x-5">
+            <a class="hover:opacity-80 transition-opacity" href="https://www.linkedin.com/in/mateo-cardonnet/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <Linjedin class="size-6" />
+            </a>
+            <a class="hover:opacity-80 transition-opacity" href="https://github.com/mateocardonnet" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <Github class="size-6" />
+            </a>
+        </div>
+    </div>
+</header>
+
+<script>
+    window.addEventListener("scroll", () => {
+        const header = document.getElementById("site-header");
+        const avatar = document.getElementById("site-avatar");
+        const scrolled = window.scrollY > 0;
+        if (header) header.classList.toggle("scrolled", scrolled);
+        if (avatar) avatar.classList.toggle("scrolled", scrolled);
+    }, { passive: true });
+</script>
+
+<style>
+    #site-header.scrolled {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    #site-avatar {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        pointer-events: none;
+    }
+    #site-avatar.scrolled {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    #site-header .nav-links {
+        transition: transform 0.35s ease;
+    }
+    #site-header.scrolled .nav-links {
+        transform: translateY(-50%) translateX(calc(-50% - 70px));
+    }
+
+    #site-header .social-icons {
+        transition: transform 0.35s ease;
+    }
+    #site-header.scrolled .social-icons {
+        transform: translateY(-50%) translateX(70px);
+    }
+</style>

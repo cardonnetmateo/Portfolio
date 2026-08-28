@@ -1,0 +1,12 @@
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a href={href} class=" opacity-80 relative group transition hover:text-indigo-400 ">
+  <slot />
+  <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-indigo-400 rounded-full transition-opacity opacity-0 group-hover:opacity-100"></span>
+</a>

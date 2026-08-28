@@ -1,0 +1,68 @@
+---
+const { title, description, folder, link } = Astro.props;
+
+const images = Object.entries(import.meta.glob("../assets/**/*.{png,webp}", { eager: true }))
+    .filter(([path]) => path.includes(`/${folder}/`))
+    .map(([, mod]) => {
+        const defaultExport = (mod as any).default;
+        return {
+            src: defaultExport?.src ?? (mod as any).src,
+            width: defaultExport?.width ?? 0,
+            height: defaultExport?.height ?? 0,
+        };
+    });
+---
+
+<div class="block w-full mx-auto rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 shadow-lg transition-colors duration-300 hover:border-indigo-400/40">
+    <div class="carousel relative overflow-hidden rounded-xl">
+        {images.map((img, i) => (
+            <div class="carousel-slide hidden [&.active]:block min-h-104 justify-center" class:list={{ active: i === 0 }}>
+                <div class="flex h-full items-center justify-center rounded-lg bg-zinc-900/40">
+                    <img class="w-full h-auto object-contain mx-auto max-h-160" src={img.src} alt={`${title} - captura ${i + 1}`} data-index={i} decoding="async" loading="lazy" />
+                </div>
+            </div>
+        ))}
+        {images.length > 1 && (
+            <>
+                <button class="carousel-prev absolute left-2 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/50 p-2 text-white hover:bg-black/70" aria-label="Anterior">&larr;</button>
+                <button class="carousel-next absolute right-2 top-1/2 -translate-y-1/2 z-10 rounded-full bg-black/50 p-2 text-white hover:bg-black/70" aria-label="Siguiente">&rarr;</button>
+                <div class="absolute bottom-2 left-1/2 z-10 flex -translate-x-1/2 gap-1.5">
+                    {images.map((_, i) => (
+                        <button class="carousel-dot size-2 rounded-full bg-white/50 transition-colors" data-index={i} aria-label={`Ir a la captura ${i + 1}`}></button>
+                    ))}
+                </div>
+            </>
+        )}
+    </div>
+    <h5 class="mt-6 mb-2 text-2xl font-semibold tracking-tight text-indigo-400">{title}</h5>
+    <p class="mb-6 leading-relaxed text-zinc-300">{description}</p>
+    <a href={link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm font-medium leading-5 text-indigo-300 shadow-xs transition-colors hover:border-indigo-400 hover:bg-indigo-500/20 hover:text-indigo-200 focus:outline-none focus:ring-4 focus:ring-indigo-500/20">
+        GitHub
+        <svg class="w-4 h-4 ms-1.5 rtl:rotate-180 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
+    </a>
+</div>
+
+<script>
+    const carousels = document.querySelectorAll(".carousel");
+
+    carousels.forEach((carousel) => {
+        const slides = carousel.querySelectorAll(".carousel-slide");
+        const dots = carousel.querySelectorAll(".carousel-dot");
+        const prevBtn = carousel.querySelector(".carousel-prev");
+        const nextBtn = carousel.querySelector(".carousel-next");
+        let index = 0;
+
+        const show = (i: number) => {
+            index = (i + slides.length) % slides.length;
+            slides.forEach((s, j) => s.classList.toggle("active", j === index));
+            dots.forEach((d, j) => {
+                d.classList.toggle("bg-white", j === index);
+                d.classList.toggle("bg-white/50", j !== index);
+            });
+        };
+
+        prevBtn?.addEventListener("click", () => show(index - 1));
+        nextBtn?.addEventListener("click", () => show(index + 1));
+        dots.forEach((d) => d.addEventListener("click", () => show(Number((d as HTMLElement).dataset.index))));
+    });
+</script>

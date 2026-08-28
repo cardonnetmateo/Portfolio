@@ -1,0 +1,113 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import SocialPill from '../components/SocialPill.astro';
+import Linkedin from '../components/icons/Linkedin.astro';
+import Github from '../components/icons/GitHub.astro';
+import Mail from '../components/icons/Mail.astro';
+import Devto from '../components/icons/Dev.astro';
+import ProyectCard from '../components/ProyectCard.astro';
+import StackCard from '../components/StackCard.astro';
+import profilePicture from '../assets/profile-picture.webp';
+import HtmlIcon from '../components/icons/Html.astro';
+import CssIcon from '../components/icons/Css.astro';
+import JsIcon from '../components/icons/Js.astro';
+import TsIcon from '../components/icons/Ts.astro';
+import ReactIcon from '../components/icons/React.astro';
+import AngularIcon from '../components/icons/Angular.astro';
+import TailwindIcon from '../components/icons/Tailwind.astro';
+import NextjsIcon from '../components/icons/Nextjs.astro';
+import JavaIcon from '../components/icons/Java.astro';
+import PythonIcon from '../components/icons/Python.astro';
+import SpringBootIcon from '../components/icons/SpringBoot.astro';
+import DjangoIcon from '../components/icons/Django.astro';
+import NestjsIcon from '../components/icons/Nestjs.astro';
+import SqlIcon from '../components/icons/Sql.astro';
+import PostgresSqlIcon from '../components/icons/PostgresSql.astro';
+import MongoDbIcon from '../components/icons/MongoDb.astro';
+import GitIcon from '../components/icons/Git.astro';
+import DockerIcon from '../components/icons/Docker.astro';
+import N8nIcon from '../components/icons/N8n.astro';
+---
+
+<Layout title = "Portfolio de Mateo">
+    <main>
+        <section class="w-full lg:w-185 mx-auto h-[calc(100svh-14rem)] flex flex-col justify-center py-20">
+            <h1 class=" gap-x-4 text-4xl font-bold justify-center flex-row">Hola, <span class="text-indigo-400">soy Mateo</span></h1>
+            <h2 class="text-sm font-semibold mb-6 animate-pulse text-indigo-300">Desarrollador Fullstack</h2>
+            <p class="text-lg text-gray-300 py-6">
+                Desarrollador de software y estudiante de Ingeniería en Sistemas enfocado en la creación de aplicaciones web y soluciones para problemas reales.
+            </p>
+            <div class="mb-6 flex py-6 gap-x-2">
+                <SocialPill><Linkedin class="size-5 mr-2"/>Linkedin</SocialPill>
+                <SocialPill><Github class="size-5 mr-2"/>GitHub</SocialPill>
+                <SocialPill><Mail class="size-5 mr-2"/>cardonnetmateo@gmail.com</SocialPill>
+                <SocialPill><Devto class="size-5 mr-2"/>Proyectos</SocialPill>
+            </div>
+        </section>
+        <section class="w-full lg:w-270 mx-auto pb-30">
+            <h1 class="text-xl font-bold text-center transition-transform duration-300 hover:scale-105">
+                Proyectos <span class="inline-block animate-bounce">⬇️</span>
+            </h1>
+            <div class="mt-10 flex flex-col items-center gap-50 py-36 ">
+                <ProyectCard folder="proyecto1" title="Sistema Estacionamiento" description="Gestión de estacionamientos con control de ingresos/egresos, cuentas corrientes, abonos mensuales y recarga de saldo. Full Stack con Java Spring Boot, Next.js y PostgreSQL. Utilizacion de docker" link="https://github.com/cardonnetmateo/Sistema-Estacionamiento" />
+                <ProyectCard folder="proyecto2" title="MarketHub" description="Plataforma de gestión de productos y usuarios enfocada en la seguridad, con autenticación JWT, autorización por roles y verificación por correo. Full Stack con NestJS, Angular y Sqlite3. Utilizacion de docker" link="https://github.com/cardonnetmateo/TPF-DESARROLLO" />
+            </div>
+        </section>
+        <!-- seccion sobre mi -->
+        <section class="w-full lg:w-185 mx-auto pb-30">
+            <h1 class="text-xl font-bold text-center transition-transform duration-300 hover:scale-105">
+                Sobre mí
+            </h1>
+            <div class="mt-10 flex flex-col md:flex-row items-center gap-8">
+                <Image src={profilePicture} alt="Foto de Mateo" width={160} height={200} loading="lazy" decoding="async" class="rounded-2xl border border-zinc-800 bg-zinc-900/50 shrink-0" />
+                <div class="flex flex-col gap-4 text-zinc-300">
+                    <p>Soy estudiante de Ingeniería en Sistemas y desarrollador de software enfocado en la creación de aplicaciones web y soluciones para problemas reales.</p>
+                    <p>Me interesa el desarrollo full stack y disfruto participar en todas las etapas de un proyecto: desde el diseño de la interfaz hasta la lógica de negocio, las bases de datos y el despliegue.</p>
+                    <p>Como parte de mi formación, desarrollo proyectos personales que me permiten aplicar tecnologías y buenas prácticas utilizadas en el ámbito profesional. Entre ellos, he construido aplicaciones utilizando React, Next.js, Astro, Angular, NestJS, Spring Boot, Django, JavaScript, Python, Java, SQL, Tailwind CSS y automatizaciones con n8n.</p>
+                    <p class="text-sm text-indigo-300 font-semibold">Full Stack Developer | Automation & AI Solutions | Estudiante de Ingeniería en Sistemas</p>
+                    <div class="flex flex-wrap gap-2">
+                        <SocialPill><Github class="size-5 mr-2" /><a href="https://github.com/cardonnetmateo" target="_blank" rel="noopener noreferrer">cardonnetmateo</a></SocialPill>
+                        <SocialPill><a href="/curriculum.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center">📄 Curriculum</a></SocialPill>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- seccion stack tecnologico -->
+        <section class="w-full lg:w-270 mx-auto pb-30">
+            <h1 class="text-xl font-bold text-center transition-transform duration-300 hover:scale-105">
+                Stack tecnológico
+            </h1>
+            <div class="mt-10 grid gap-6 md:grid-cols-3">
+                <StackCard title="Frontend">
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><HtmlIcon class="size-4" />HTML</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><CssIcon class="size-4" />CSS</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><JsIcon class="size-4" />JavaScript</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><TsIcon class="size-4" />TypeScript</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><ReactIcon class="size-4" />React.js</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><AngularIcon class="size-4" />Angular</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><TailwindIcon class="size-4" />Tailwind CSS</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><NextjsIcon class="size-4" />Next.js</span>
+                </StackCard>
+                <StackCard title="Backend">
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><JavaIcon class="size-4" />Java</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><PythonIcon class="size-4" />Python</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><SpringBootIcon class="size-4" />Spring Boot</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><DjangoIcon class="size-4" />Django</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><NestjsIcon class="size-4" />NestJS</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><SqlIcon class="size-4" />SQL</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><PostgresSqlIcon class="size-4" />PostgreSQL</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><MongoDbIcon class="size-4" />MongoDB</span>
+                </StackCard>
+                <StackCard title="Herramientas">
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><Github class="size-4" />GitHub</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><GitIcon class="size-4" />Git</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><DockerIcon class="size-4" />Docker</span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-white/5 px-3 py-1.5 text-sm text-zinc-300"><N8nIcon class="size-4" />n8n</span>
+                </StackCard>
+            </div>
+        </section>
+
+    </main>
+</Layout>
