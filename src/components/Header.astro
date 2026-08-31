@@ -5,20 +5,20 @@ import Github from './icons/GitHub.astro';
 import { Image } from 'astro:assets';
 import profileImg from '../assets/profile-picture.webp';
 ---
-<header id="site-header" class="sticky top-0 z-50 bg-transparent backdrop-blur-md w-280 mx-auto py-5 transition-all duration-300">
+<header id="site-header" class="sticky top-0 z-50 bg-transparent backdrop-blur-md w-full lg:w-280 mx-auto py-5 transition-all duration-300">
     <div class="site-header-inner relative h-20 flex items-center justify-center">
-        <div id="site-avatar" class="absolute left-0">
+        <div id="site-avatar" class="absolute left-0 hidden md:block">
             <Image class="size-20 rounded-full object-cover object-top border-2 border-b-black" src={profileImg} alt="Rounded avatar" width={160} height={200} loading="eager" fetchpriority="high" />
         </div>
 
-        <nav class="nav-links absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 flex flex-row gap-x-10">
+        <nav class="nav-links absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 flex flex-row gap-x-4 md:gap-x-10">
             <NavLink href="#proyectos">Proyectos</NavLink>
             <NavLink href="#sobre-mi">Sobre mí</NavLink>
             <NavLink href="#stack">Stack</NavLink>
             <NavLink href="mailto:cardonnetmateo@gmail.com">Contacto</NavLink>
         </nav>
 
-        <div class="social-icons absolute right-0 top-1/2 -translate-y-1/2 flex flex-row gap-x-5">
+        <div class="social-icons absolute right-0 top-1/2 -translate-y-1/2 hidden md:flex flex-row gap-x-5">
             <a class="hover:opacity-80 transition-opacity" href="https://www.linkedin.com/in/mateo-cardonnet/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <Linkedin class="size-6" />
             </a>
@@ -57,14 +57,18 @@ import profileImg from '../assets/profile-picture.webp';
     #site-header .nav-links {
         transition: transform 0.35s ease;
     }
-    #site-header.scrolled .nav-links {
-        transform: translateY(-50%) translateX(calc(-70% - 70px));
+    @media (min-width: 768px) {
+        #site-header.scrolled .nav-links {
+            transform: translateY(-50%) translateX(calc(-70% - 70px));
+        }
     }
 
     #site-header .social-icons {
         transition: transform 0.35s ease;
     }
-    #site-header.scrolled .social-icons {
-        transform: translateY(-50%) translateX(20px);
+    @media (min-width: 768px) {
+        #site-header.scrolled .social-icons {
+            transform: translateY(-50%) translateX(20px);
+        }
     }
 </style>
