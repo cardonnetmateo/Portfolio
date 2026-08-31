@@ -35,7 +35,7 @@ const images = Object.entries(import.meta.glob("../assets/**/*.{png,webp}", { ea
         )}
     </div>
     <h5 class="mt-6 mb-2 text-2xl font-semibold tracking-tight text-indigo-400">{title}</h5>
-    <p class="mb-6 leading-relaxed text-zinc-300">{description}</p>
+    <p class="mb-6 leading-relaxed text-zinc-300 card-description" set:html={description}></p>
     <a href={link} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2.5 text-sm font-medium leading-5 text-indigo-300 shadow-xs transition-colors hover:border-indigo-400 hover:bg-indigo-500/20 hover:text-indigo-200 focus:outline-none focus:ring-4 focus:ring-indigo-500/20">
         GitHub
         <svg class="w-4 h-4 ms-1.5 rtl:rotate-180 -me-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/></svg>
@@ -66,3 +66,10 @@ const images = Object.entries(import.meta.glob("../assets/**/*.{png,webp}", { ea
         dots.forEach((d) => d.addEventListener("click", () => show(Number((d as HTMLElement).dataset.index))));
     });
 </script>
+
+<style>
+    .card-description :global(strong) {
+        color: #a5b4fc;
+        font-weight: 600;
+    }
+</style>

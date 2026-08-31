@@ -1,12 +1,13 @@
 ---
 interface Props {
 	title: string;
+	class?: string;
 }
 
-const { title } = Astro.props;
+const { title, class: className } = Astro.props;
 ---
 
-<article class="flex flex-col items-center rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 hover:border-indigo-400/40 transition-colors">
+<article class:list={["flex flex-col items-center rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 hover:border-indigo-400/40 transition-colors", className]}>
 	<h3 class="text-lg font-semibold text-indigo-400 mb-5">{title}</h3>
 	<div class="flex flex-wrap justify-center gap-2.5">
 		<slot />

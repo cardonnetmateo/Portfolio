@@ -11,13 +11,21 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Portfolio de Mateo Cardonnet — Desarrollador Full Stack, estudiante de Ingeniería en Sistemas. Proyectos, stack tecnológico y contacto." />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Portfolio de Mateo" />
+		<meta property="og:description" content="Desarrollador Full Stack y estudiante de Ingeniería en Sistemas. Proyectos, stack tecnológico y contacto." />
+		<meta property="og:image" content="/og-image.webp" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content="Portfolio de Mateo" />
+		<meta name="twitter:description" content="Desarrollador Full Stack y estudiante de Ingeniería en Sistemas." />
+		<meta name="twitter:image" content="/og-image.webp" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
 	</head>
 	<body>
@@ -35,7 +43,7 @@ const { title } = Astro.props;
 	html {
 		font-family: 'Onest Variable', system-ui, sans-serif;
 		line-height: 1.5;
-
+		scroll-behavior: smooth;
 	}
 
 	body{
